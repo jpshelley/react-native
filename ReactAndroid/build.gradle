@@ -4,6 +4,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 apply plugin: 'de.undercouch.download'
+// jitpack
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.jpshelley'
 
 import de.undercouch.gradle.tasks.download.Download
 import org.apache.tools.ant.taskdefs.condition.Os
