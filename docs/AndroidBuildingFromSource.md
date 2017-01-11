@@ -103,7 +103,7 @@ Modify your `android/app/build.gradle` to use the `:ReactAndroid` project instea
 ...
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
 
     compile project(':ReactAndroid')
 

@@ -8,6 +8,6 @@ android_prebuilt_aar(
 
 remote_file(
     name = 'recyclerview-binary-aar',
-    url = 'mvn:com.android.support:recyclerview-v7:aar:25.0.1',
+    url = 'mvn:com.android.support:recyclerview-v7:aar:25.1.0',
     sha1 = '584c38397565d36657dc603adb5d2556f6463ebd',
 )
