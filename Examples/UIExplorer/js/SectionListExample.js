@@ -26,7 +26,9 @@
 const React = require('react');
 const ReactNative = require('react-native');
 const {
+  Alert,
   Animated,
+  Button,
   SectionList,
   StyleSheet,
   Text,
@@ -123,11 +125,20 @@ class SectionListExample extends React.PureComponent {
             {renderSmallSwitchOption(this, 'virtualized')}
             {renderSmallSwitchOption(this, 'logViewable')}
             {renderSmallSwitchOption(this, 'debug')}
+            <Button
+              onPress={() => {
+                console.log(this._listRef.getNode());
+                this._listRef.getNode().scrollToEnd();
+              }}
+              title="Press Me"
+              accessibilityLabel="See an informative alert"
+            />
             <Spindicator value={this._scrollPos} />
           </View>
         </View>
         <SeparatorComponent />
         <AnimatedSectionList
+          ref={this._captureRef}
           ListHeaderComponent={HeaderComponent}
           ListFooterComponent={FooterComponent}
           SectionSeparatorComponent={() =>
@@ -159,6 +170,7 @@ class SectionListExample extends React.PureComponent {
       </UIExplorerPage>
     );
   }
+  _captureRef = (ref) => { this._listRef = ref; };
   _renderItemComponent = ({item}) => (
     <ItemComponent item={item} onPress={this._pressItem} />
   );
@@ -183,6 +195,7 @@ class SectionListExample extends React.PureComponent {
   _pressItem = (index: number) => {
     pressItem(this, index);
   };
+  _listRef: SectionList<*>;
 }
 
 const styles = StyleSheet.create({

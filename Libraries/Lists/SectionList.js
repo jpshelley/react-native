@@ -190,9 +190,17 @@ class SectionList<SectionT: SectionBase<any>>
   props: Props<SectionT>;
   static defaultProps: DefaultProps = defaultProps;
 
+  scrollToEnd(params?: ?{animated?: ?boolean}) {
+    this._listRef.scrollToEnd(params);
+  }
+
+  _listRef: VirtualizedSectionList;
+
+  _captureRef = (ref) => { this._listRef = ref; };
+
   render() {
     const List = this.props.legacyImplementation ? MetroListView : VirtualizedSectionList;
-    return <List {...this.props} />;
+    return <List {...this.props} ref={this._captureRef} />;
   }
 }
 

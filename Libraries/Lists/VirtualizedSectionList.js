@@ -114,10 +114,18 @@ class VirtualizedSectionList<SectionT: SectionBase>
 
   state: State;
 
+  scrollToEnd(params?: ?{animated?: ?boolean}) {
+    this._listRef.scrollToEnd(params);
+  }
+
   static defaultProps: DefaultProps = {
     ...VirtualizedList.defaultProps,
     data: [],
   };
+
+  _listRef: VirtualizedList;
+
+  _captureRef = (ref) => { this._listRef = ref; };
 
   _keyExtractor = (item: Item, index: number) => {
     const info = this._subExtractor(index);
@@ -257,7 +265,7 @@ class VirtualizedSectionList<SectionT: SectionBase>
   }
 
   render() {
-    return <VirtualizedList {...this.state.childProps} />;
+    return <VirtualizedList {...this.state.childProps} ref={this._captureRef}/>;
   }
 }
 
